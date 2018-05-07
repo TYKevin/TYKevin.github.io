@@ -3,16 +3,16 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: KevinTong‘s Blog
-subtitle: 带你领略后现代 Androider 的魅力
-description: 于水流婉转处能耐住寂寞，临波涛惊骇时能跃于其上
+title: Kevin's Tech Blog
+subtitle: To Be Better Full Stack Developer
+description: Talk is cheap, Show me the code
 author: KevinTong
 language: zh-CN
 timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://blog.kevintong.me
+url: http://TYKevin.github.io
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
