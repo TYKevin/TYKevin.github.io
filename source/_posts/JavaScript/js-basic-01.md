@@ -1,0 +1,92 @@
+---
+title: JavaScript 基础（一）- JavaScript 使用
+date: 2018-05-08 23:23:00
+tags:
+    - JavaScript
+    - JavaScript 高级程序设计
+---
+
+## `<script>`  标签
+
+这个我想应该众所周知了吧，想在 HTML 中使用 JS，在 `<html>` 标签中嵌入 `<script></script>` 标签即可。
+
+有几点 Tips 在这里整理一下：
+
+###  `<script>` 的位置
+惯例中所有 `<script>` 放置在 `<head>` 中
+
+不过如果需要加载大量 JS 文件时，为了加快页面打开速度，可以放在 `<body>` 中，因为浏览器在遇到 `<body>` 标签是才开始呈现内容。
+
+### 延迟脚本
+`defer 属性` 表示脚本会被延迟到整个页面都解析完毕后再执行，相当于 此脚本立即下载，但延迟执行。
+
+`<script defer="defer" src="example.js"></script>`
+
+ * 此 JS 会在 `</head>` 后执行
+ * 会依据加载的顺序执行
+ * 只适用于 外部文件
+ * 兼容性问题：>IE4、FIrefox 3.5、 Safari 5 和 Chrome 支持，其余忽略此属性
+ * So，最佳实践: 将此 JS 加载放在页面底部
+
+### 异步脚本
+`async 属性` 表示脚本不让页面等待脚本的下载和执行，从而异步加载页面其他内容。
+
+`<script async="async" src="example.js"></script>`
+
+ * 不会依据加载的顺序执行，所以 async 属性的脚本不能具有关联性
+ * 只适用于 外部文件
+ * 兼容性问题：FIrefox 3.6、 Safari 5 和 Chrome 支持，其余忽略此属性
+
+### 在 XHTML 中使用
+我们都知道，在 XHTML 中，有着更严苛的语法校验。所以在 XHTML 中，我们会发现 普通的 JavaScript 会导致编译失败，比如 小于号 `<` , 在 XHTML 里 就会解析为开始一个新标签，因此导致语法错误。所以，我们有三种方式去解决：
+* 利用 HTML 实体 去替换，比如 `<` 替换为 `&lt;`（可读性差）
+* 利用 CData 片段包含 JS 脚本：(很多浏览器不支持XHTML，兼容性差)
+    ```
+        <script type="text/javascript"><![CDATA{
+            function compare(a, b) {
+               if (a < b) {
+                 console.log('a is less than b')
+               }
+            }
+        }]>
+        </script>
+    ```
+* Hacker：注释 CDATA 标记（so hacker），上下兼容
+    ```
+        <script type="text/javascript">
+        // <![CDATA{
+            function compare(a, b) {
+               if (a < b) {
+                 console.log('a is less than b')
+               }
+            }
+        // }]>
+        </script>
+    ```
+ * 最佳实践：通过外部链接引入 JS
+
+ ## 嵌入代码 与 外部文件
+ 虽然没有硬性规定，但是 我们还是推荐使用外链的形式载入 JS 文件，这所带来的好处：
+ * 可维护性 增加
+ * 可缓存： 加快页面打开速度
+ * 适应未来：解决了 XHTML 下 的语法冲突问题
+
+## `<noscript>` 元素
+在不支持脚本的浏览器中显示替代内容。
+
+ ```
+ <html>
+    <head>
+    </head>
+    <body>
+        <noscript>
+            <p>本页面需要浏览器开启 JavaScript</p>
+        </noscript>
+    </body>
+ </html>
+ ```
+
+ 会显示 `<noscript>` 中的两种情况：
+ * 在 不支持脚本 的浏览器（现在应该不存在了吧）
+ * 脚本被禁用的状态时
+

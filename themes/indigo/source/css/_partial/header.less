@@ -43,9 +43,12 @@
 }
 
 .content-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     min-height: 210px;
     margin-left: -240px;
-    padding: 104px 16px 48px 256px;
+    padding: 104px 16px 48px 306px;
     color: @textPrimaryColor;
     background: @primaryColor;
     text-shadow: 0 1px 1px rgba(0, 0, 0, .2);
@@ -62,6 +65,22 @@
 
     .article-category-list-link {
         color: lighten(@accentColor, 10%);
+    }
+
+    .qr-container {
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        justify-content: center;
+        width: 150px;
+        text-align: center;
+        margin-right: 100px;
+
+        .qr-code {
+            width: 125px;
+            height: 125px;
+            margin: 10px auto;
+        }
     }
 
 }

@@ -78,7 +78,7 @@
         margin: 0;
         padding: 12px 0;
         height: 300px;
-        min-height: ~"calc(100% - 115px)";
+        min-height: ~"calc(100% - 315px)";
         list-style: none;
         line-height: @navH;
 
@@ -114,7 +114,22 @@
             color: @secondaryTextColor;
             text-decoration: none;
         }
+    }
 
+    .qr-container {
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        justify-content: center;
+        width: @menuWidth;
+        margin-top: 50px;
+        text-align: center;
+
+        .qr-code {
+            width: @menuWidth - 50px;
+            height: @menuWidth - 50px;
+            margin: 10px auto;
+        }
     }
 
 }
