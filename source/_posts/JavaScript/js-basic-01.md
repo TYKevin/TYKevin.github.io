@@ -1,5 +1,5 @@
 ---
-title: JavaScript 基础（一）- JavaScript 使用
+title: JavaScript 高级程序设计（一）- JavaScript 使用
 date: 2018-05-08 23:23:00
 tags:
     - JavaScript
@@ -41,28 +41,28 @@ tags:
 我们都知道，在 XHTML 中，有着更严苛的语法校验。所以在 XHTML 中，我们会发现 普通的 JavaScript 会导致编译失败，比如 小于号 `<` , 在 XHTML 里 就会解析为开始一个新标签，因此导致语法错误。所以，我们有三种方式去解决：
 * 利用 HTML 实体 去替换，比如 `<` 替换为 `&lt;`（可读性差）
 * 利用 CData 片段包含 JS 脚本：(很多浏览器不支持XHTML，兼容性差)
-    ```
-        <script type="text/javascript"><![CDATA{
-            function compare(a, b) {
-               if (a < b) {
-                 console.log('a is less than b')
-               }
-            }
-        }]>
-        </script>
-    ```
+```javascript
+    <script type="text/javascript"><![CDATA{
+        function compare(a, b) {
+           if (a < b) {
+             console.log('a is less than b')
+           }
+        }
+    }]>
+    </script>
+```
 * Hacker：注释 CDATA 标记（so hacker），上下兼容
-    ```
-        <script type="text/javascript">
-        // <![CDATA{
-            function compare(a, b) {
-               if (a < b) {
-                 console.log('a is less than b')
-               }
-            }
-        // }]>
-        </script>
-    ```
+```JavaScript
+    <script type="text/javascript">
+    // <![CDATA{
+        function compare(a, b) {
+           if (a < b) {
+             console.log('a is less than b')
+           }
+        }
+    // }]>
+    </script>
+```
  * 最佳实践：通过外部链接引入 JS
 
  ## 嵌入代码 与 外部文件
@@ -74,8 +74,8 @@ tags:
 ## `<noscript>` 元素
 在不支持脚本的浏览器中显示替代内容。
 
- ```
- <html>
+```html
+<html>
     <head>
     </head>
     <body>
@@ -83,8 +83,8 @@ tags:
             <p>本页面需要浏览器开启 JavaScript</p>
         </noscript>
     </body>
- </html>
- ```
+</html>
+```
 
  会显示 `<noscript>` 中的两种情况：
  * 在 不支持脚本 的浏览器（现在应该不存在了吧）
