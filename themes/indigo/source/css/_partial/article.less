@@ -87,6 +87,14 @@
     }
 }
 
+.post-toc-shrink {
+    height: 0;
+    overflow-y: hidden;
+}
+
+.post-toc-expand {
+    height: auto;
+}
 
 .post-article {
     .post-content {
@@ -302,6 +310,9 @@
     figure,
     .video-container {
         margin-bottom: 20px;
+    }
+    .video-container iframe {
+        max-width: 100%;
     }
 
     h1,
